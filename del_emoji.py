@@ -1,6 +1,7 @@
 import nagisa
 import emoji
 import re
+import sys
 
 def date_to_tag(src):
     """
@@ -46,28 +47,6 @@ def del_auxiliary_symbol(src):
 
     return "".join(nagisa.filter(src, filter_postags=['補助記号']).words)
 
-def del_specific_symbol(src):
-    """
-    顔文字を正規表現で削除（精度低め）
-
-    Parameters
-    ----------
-    src : String
-        削除対象の文字列
-
-    Returns
-    -------
-    src : String
-        削除後の文字列
-    """
-    pattern = re.compile(r'.*\([^あ-ん\u30A1-\u30F4\u2E80-\u2FDF\u3005-\u3007\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF\U00020000-\U0002EBEF]+?\).*')
-
-    src = re.sub(pattern, '', src)
-
-    return src
-
-
-
 def del_auxiliary_symbol_by_file(file_path):
     """
     テキストファイルに対して日付をDATEに置き換えた後に顔文字及び絵文字を削除
@@ -81,7 +60,9 @@ def del_auxiliary_symbol_by_file(file_path):
     fin = open(file_path, "r")
     for line in fin:
         line = date_to_tag(line)
-        line = del_auxiliary_symbol(line)
-        fout.write(del_specific_symbol(line) + "\n")
+        fout.write(del_auxiliary_symbol(line) + "\n")
     fin.close()
     fout.close()
+
+
+del_auxiliary_symbol_by_file(sys.argv[1])
