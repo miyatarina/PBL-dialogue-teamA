@@ -1,17 +1,16 @@
 import nagisa
 import emoji
+import tqdm
 import re
 import sys
 
 def date_to_tag(src):
     """
     日付をDATEに置き換える。
-
     Parameters
     ----------
     src : String
         置き換える対象の文字列
-
     Returns
     -------
     src : String
@@ -32,12 +31,10 @@ def del_auxiliary_symbol(src):
     """
     絵文字をunicodeベース、顔文字をrecurrent neural networkに基づいてで削除
     （顔文字は精度そこそこ）
-
     Parameters
     ----------
     src : String
         削除対象の文字列
-
     Returns
     -------
     src : String
@@ -50,19 +47,19 @@ def del_auxiliary_symbol(src):
 def del_auxiliary_symbol_by_file(file_path):
     """
     テキストファイルに対して日付をDATEに置き換えた後に顔文字及び絵文字を削除
-
     Parameters
     ----------
     file_path : String
         置き換える対象の文字列が保存されたファイルのパス
     """
-    fout = open(file_path.replace(".txt", ".tok.txt"), "w")
-    fin = open(file_path, "r")
-    for line in fin:
-        line = date_to_tag(line)
-        fout.write(del_auxiliary_symbol(line) + "\n")
-    fin.close()
-    fout.close()
 
+    with open(file_path, "r") as fin:
+        with open(file_path.replace(".txt", ".demoji.txt"), "w") as fout:
+            for line in tqdm.tqdm(fin):
+                line = date_to_tag(line)
+                tag, speech, response = line.split("\t")
 
-del_auxiliary_symbol_by_file(sys.argv[1])
+                # 不自然な空白が生じるため(おそらく改行部分)、"。"に置換
+                fout.write(tag + "\t" + del_auxiliary_symbol(speech).replace("　", "。") + "\t" + del_auxiliary_symbol(response).replace("　", "。") + "\n") 
+
+#del_auxiliary_symbol_by_file(sys.argv[1])
