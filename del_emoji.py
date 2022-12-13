@@ -62,4 +62,4 @@ def del_auxiliary_symbol_by_file(file_path):
                 # 不自然な空白が生じるため(おそらく改行部分)、"。"に置換
                 fout.write(tag + "\t" + del_auxiliary_symbol(speech).replace("　", "。") + "\t" + del_auxiliary_symbol(response).replace("　", "。") + "\n") 
 
-#del_auxiliary_symbol_by_file(sys.argv[1])
+del_auxiliary_symbol_by_file(sys.argv[1])
