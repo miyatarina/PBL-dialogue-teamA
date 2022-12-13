@@ -1,1 +1,1 @@
-sentencepiece0.1.97
+sentencepiece==0.1.97
