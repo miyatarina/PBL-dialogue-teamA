@@ -1,1 +1,4 @@
+emoji==2.2.0
+nagisa==0.2.8
+tqdm==4.64.1
 sentencepiece==0.1.97
