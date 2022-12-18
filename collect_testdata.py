@@ -45,9 +45,12 @@ while True:
             #print(s.author.screen_name)
             user = api.get_user(screen_name=s.author.screen_name)
             user_location = user.location
+            user_description = user.description
             
-            if s.author.screen_name not in all_screen_names and re.compile(r'.*(北海道|宮城|東京|愛知|大阪|広島|愛媛|福岡).*').search(user_location): 
-                print(user_location)
+            if s.author.screen_name not in all_screen_names and re.compile(r'.*(北海道|宮城|東京|愛知|大阪|広島|愛媛|福岡).*').search(user_location) and re.compile(r'.*(男|女).*').search(user_description): # 収集条件を変える際はここを変更してください 
+                # print(user_location)
+                # print(user_description)
+                # print('\n')
                 screen_names.add(s.author.screen_name)
                 all_screen_names.add(s.author.screen_name)
 
@@ -78,18 +81,12 @@ while True:
         except Exception as e:
             continue
 
-    # 保存したツイートのリプライ先のツイートが保存されていれば，id2replyidのキーを元ツイートのid，値をリプライ先ツイートのidとする
-    id2replyid = {}
-    for _, s in id2status.items():
-        if s.in_reply_to_status_id in id2status:
-            if s.in_reply_to_status_id != s.id:
-                id2replyid[s.in_reply_to_status_id] = s.id
+    
 
 
     # id2replyidのkey valueからstatusを取得し，ツイートペアをタブ区切りで保存
-    with open(opt.sf, "a") as f:
-        for id, rid in id2replyid.items():
-            
+    def writefile(id, rid):
+        with open(opt.sf, "a") as f:
             user_location = api.get_user(screen_name=s.author.screen_name).location
             if re.compile(r'.*(北海道).*').search(user_location):
                 tag = "<北海道>"
@@ -107,6 +104,18 @@ while True:
                 tag = "<愛媛>"
             elif re.compile(r'.*(福岡).*').search(user_location):
                 tag = "<福岡>"
+            else:
+                return
+            
+            # 性別
+            user_description = api.get_user(screen_name=s.author.screen_name).description
+            if re.compile(r'.*(男).*').search(user_description):
+                tag2 = "<男>"
+            elif re.compile(r'.*(女).*').search(user_description):
+                tag2 = "<女>"
+            else:
+                return
+              
 
             # 改行は半角スペースに置換
             tweet1 = id2status[id].full_text.replace("\n", " ")
@@ -116,8 +125,15 @@ while True:
             tweet2 = id2status[rid].full_text.replace("\n", " ")
             tweet2 = re.sub(r"@[0-9a-zA-Z_]{1,15} +", "", tweet2)
 
-            f.write(tweet1+ "\t" + tweet2 + "\n")
-    
+            f.write(tag + ' ' + tag2 + "\t" + tweet1+ "\t" + tweet2 + "\n") # 収集条件を変える際はここを変更してください
+      
+    # 保存したツイートのリプライ先のツイートが保存されていれば，id2replyidのキーを元ツイートのid，値をリプライ先ツイートのidとする
+    id2replyid = {}
+    for _, s in id2status.items():
+        if s.in_reply_to_status_id in id2status:
+            if s.in_reply_to_status_id != s.id:
+                id2replyid[s.in_reply_to_status_id] = s.id
+                writefile(s.id, s.in_reply_to_status_id)
     print("Write " + str(len(id2replyid)) + " pairs.")
 
 
@@ -135,4 +151,3 @@ while True:
     #         tweet3 = re.sub(r"@[0-9a-zA-Z_]{1,15} +", "", tweet3)
     #         f.write(tweet1 + " SEP " + tweet2 + "\t" + tweet3 + "\n")
     # f.close()
-
