@@ -8,4 +8,4 @@
 
 # よくあるエラー
 - TypeError: __init__() got an unexpected keyword argument 'auth_handler'
--- pip3 install tweepy==3.8.0 urllib3==1.26.9
+  - pip3 install tweepy==3.8.0 urllib3==1.26.9
