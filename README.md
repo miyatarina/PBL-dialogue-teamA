@@ -9,4 +9,5 @@ conda activate 環境名 を実行
 
 pip3 install tweepy==3.8.0 urllib3==1.26.9 を実行（初回のみ）
 
-bash collect_testdata.sh と実行
+bash collect_testdata.sh でプログラムを実行
+bash collect_testdata.sh を編集することで、出力先のファイル名を変更できます
