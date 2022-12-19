@@ -2,7 +2,7 @@
 import sentencepiece as spm
 import sys
 
-tag_list = ['<男>', '女', '<北海道>'，'<宮城>'，'<東京>'，'<愛知>'，'<大阪>'，'<広島>'，'<愛媛>'，'<福岡>']
+tag_list = ['<男>', '女', '<北海道>', '<宮城>', '<東京>', '<愛知>', '<大阪>', '<広島>', '<愛媛>', '<福岡>']
 
 # 学習の実行
 def sentence_piece_train(file_path):
