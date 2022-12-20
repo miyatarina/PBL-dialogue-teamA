@@ -43,16 +43,22 @@ while True:
 
         if s.source in sources: 
             #print(s.author.screen_name)
-            user = api.get_user(screen_name=s.author.screen_name)
+            try:
+                user = api.get_user(screen_name=s.author.screen_name)
+            except tweepy.error.TweepError:
+                print("User has been suspended. or User not found.")
+                continue
+
             user_location = user.location
             user_description = user.description
             
-            if s.author.screen_name not in all_screen_names and re.compile(r'.*(北海道|宮城|東京|愛知|大阪|広島|愛媛|福岡).*').search(user_location) and re.compile(r'.*(男|女).*').search(user_description): # 収集条件を変える際はここを変更してください 
+            if s.author.screen_name not in all_screen_names and re.compile(r'.*(北海道|宮城|東京|愛知|大阪|広島|愛媛|福岡).*').search(user_location) and re.compile(r'.*(男|女).*').search(user_description): 
                 # print(user_location)
                 # print(user_description)
                 # print('\n')
                 screen_names.add(s.author.screen_name)
                 all_screen_names.add(s.author.screen_name)
+            
 
     # ステータスidからステータスを得るためのdict
     id2status = {}
@@ -125,7 +131,7 @@ while True:
             tweet2 = id2status[rid].full_text.replace("\n", " ")
             tweet2 = re.sub(r"@[0-9a-zA-Z_]{1,15} +", "", tweet2)
 
-            f.write(tag + ' ' + tag2 + "\t" + tweet1+ "\t" + tweet2 + "\n") # 収集条件を変える際はここを変更してください
+            f.write(tag + ' ' + tag2 + "\t" + tweet1+ "\t" + tweet2 + "\n")
       
     # 保存したツイートのリプライ先のツイートが保存されていれば，id2replyidのキーを元ツイートのid，値をリプライ先ツイートのidとする
     id2replyid = {}
