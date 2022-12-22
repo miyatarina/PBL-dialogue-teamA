@@ -8,7 +8,7 @@ Original file is located at
 """
 # ライブラリのインストール
 
-py -m pip install janome
+! pip install janome
 
 # 単語分割
 
