@@ -5,3 +5,5 @@
 - ツイートから性格を学習
 - Teregramへの組み込み
 - Alexaへの組み込み
+
+python -m pip install janome でjanomeをインストール
