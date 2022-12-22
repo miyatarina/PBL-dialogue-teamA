@@ -9,7 +9,7 @@ Original file is located at
 
 # ライブラリのインストール
 
-import janome
+pip install janome
 
 # 単語分割
 
