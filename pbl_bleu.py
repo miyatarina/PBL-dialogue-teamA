@@ -7,31 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1jAb4GgvMaPvCaJkB4pjOAC2YiXPSdj_Y
 """
 
-# ライブラリのインストール
-
-pip install janome
-
-# 単語分割
-
-from janome.tokenizer import Tokenizer
-tokenizer = Tokenizer()
-
-# 実際に返ってきた応答文
-fout = open("outou.txt", "w")
-fin = open("outou.txt", "r")
-for line in fin:
-    fout.write(" ".join([token.surface for token in tokenizer.tokenize(line.strip())]) + "\n")
-fin.close()
-fout.close()
-
-# 自分たちが想定している応答文
-fout = open("outou.test.txt", "w")
-fin = open("outou.test.txt", "r")
-for line in fin:
-    fout.write(" ".join([token.surface for token in tokenizer.tokenize(line.strip())]) + "\n")
-fin.close()
-fout.close()
-
 # 評価
 
 from torchtext.data.metrics import bleu_score
