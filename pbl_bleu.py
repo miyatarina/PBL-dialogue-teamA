@@ -8,7 +8,7 @@ Original file is located at
 """
 # ライブラリのインストール
 
-! pip install janome
+python -m pip install janome
 
 # 単語分割
 
@@ -33,7 +33,8 @@ fout.close()
 
 # 評価
 
-from torchtext.data.metrics import bleu_score
+# from torchtext.data.metrics import bleu_score
+from nltk import bleu_score
 
 def bleu(fname_ref, fname_pred):    
     # 正解文
