@@ -57,7 +57,10 @@ def del_auxiliary_symbol_by_file(file_path):
         with open(file_path.replace(".txt", ".demoji.txt"), "w") as fout:
             for line in tqdm.tqdm(fin):
                 line = date_to_tag(line)
-                tag, speech, response = line.split("\t")
+                try:
+                    tag, speech, response = line.strip().split("\t")
+                except:
+                    continue
 
                 # 不自然な空白が生じるため(おそらく改行部分)、"。"に置換
                 fout.write(tag + "\t" + del_auxiliary_symbol(speech).replace("　", "。") + "\t" + del_auxiliary_symbol(response).replace("　", "。") + "\n") 
