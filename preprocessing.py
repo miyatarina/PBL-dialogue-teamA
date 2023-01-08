@@ -8,7 +8,7 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('-mw', '--min_word', type=int, default=10, help='minimum number of characters')
 parser.add_argument('-ns', '--number_sentences', type=int, default=1000000, help='number of sentences to get')
-
+opt = parser.parse_args()
 def del_auxiliary_symbol(src):
     """
     絵文字をunicodeベース、顔文字をrecurrent neural networkに基づいてで削除
@@ -66,13 +66,13 @@ def random_pair(file_path):
                 continue
             if is_space(speech) or is_space(response):
                 continue
-            if count_min_word(speech, response) < parser.min_word:
+            if count_min_word(speech, response) < opt.min_word:
                 continue
             speech_list.append(speech)
             response_list.append(response)
     
     with open(file_path.replace(".txt", ".demoji.txt"), "w", encoding='utf-8') as fout:
-        for i in rand_ints_nodup(0, len(speech_list), parser.number_sentences):
+        for i in rand_ints_nodup(0, len(speech_list), opt.number_sentences):
             fout.write(del_auxiliary_symbol(speech_list[i]).replace("　", "。") + "\t" + del_auxiliary_symbol(response_list[i]).replace("　", "。") + "\n") 
 
 random_pair(sys.argv[1])
