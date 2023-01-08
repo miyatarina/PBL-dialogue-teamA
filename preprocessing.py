@@ -6,6 +6,7 @@ import sys
 import argparse
 
 parser = argparse.ArgumentParser()
+parser.add_argument('arg1')
 parser.add_argument('-mw', '--min_word', type=int, default=10, help='minimum number of characters')
 parser.add_argument('-ns', '--number_sentences', type=int, default=1000000, help='number of sentences to get')
 opt = parser.parse_args()
@@ -75,4 +76,4 @@ def random_pair(file_path):
         for i in rand_ints_nodup(0, len(speech_list), opt.number_sentences):
             fout.write(del_auxiliary_symbol(speech_list[i]).replace("　", "。") + "\t" + del_auxiliary_symbol(response_list[i]).replace("　", "。") + "\n") 
 
-random_pair(sys.argv[1])
+random_pair(opt.arg1)
