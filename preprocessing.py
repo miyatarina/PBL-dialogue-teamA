@@ -72,7 +72,7 @@ def random_pair(file_path):
             response_list.append(response)
     
     with open(file_path.replace(".txt", ".demoji.txt"), "w", encoding='utf-8') as fout:
-        for i in rand_ints_nodup(0, len(speech_list), parser.number_sentences)
+        for i in rand_ints_nodup(0, len(speech_list), parser.number_sentences):
             fout.write(del_auxiliary_symbol(speech_list[i]).replace("　", "。") + "\t" + del_auxiliary_symbol(response_list[i]).replace("　", "。") + "\n") 
 
 random_pair(sys.argv[1])
