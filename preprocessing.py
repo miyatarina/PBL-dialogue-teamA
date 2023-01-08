@@ -58,7 +58,7 @@ def random_pair(file_path):
     """
     speech_list =[]
     response_list = []
-    with open(file_path, "r") as fin:
+    with open(file_path, "r", encoding='utf-8') as fin:
         for line in tqdm.tqdm(fin):
             try:
                 speech, response = line.strip().split("\t")
@@ -71,7 +71,7 @@ def random_pair(file_path):
             speech_list.append(speech)
             response_list.append(response)
     
-    with open(file_path.replace(".txt", ".demoji.txt"), "w") as fout:
+    with open(file_path.replace(".txt", ".demoji.txt"), "w", encoding='utf-8') as fout:
         for i in rand_ints_nodup(0, len(speech_list), parser.number_sentences)
             fout.write(del_auxiliary_symbol(speech_list[i]).replace("　", "。") + "\t" + del_auxiliary_symbol(response_list[i]).replace("　", "。") + "\n") 
 
