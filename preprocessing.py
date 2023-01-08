@@ -4,6 +4,7 @@ import tqdm
 import re
 import sys
 import argparse
+import random
 
 parser = argparse.ArgumentParser()
 parser.add_argument('arg1')
