@@ -5,6 +5,7 @@ import re
 import sys
 import argparse
 import random
+import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument('arg1')
@@ -58,6 +59,7 @@ def random_pair(file_path):
     file_path : String
         置き換える対象の文字列が保存されたファイルのパス
     """
+    filesize = os.path.getsize(file_path)
     speech_list =[]
     response_list = []
     with open(file_path, "r", encoding='utf-8') as fin:
