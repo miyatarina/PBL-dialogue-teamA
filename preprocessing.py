@@ -65,7 +65,7 @@ def random_pair(file_path):
         with tqdm.tqdm(total=filesize) as pbar:
             for line in f:
                 try:
-                speech, response = line.strip().split("\t")
+                    speech, response = line.strip().split("\t")
                 except:
                     continue
                 if is_space(speech) or is_space(response):
