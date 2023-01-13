@@ -65,7 +65,7 @@ def random_pair(file_path):
     with open(file_path, "r", encoding='utf-8') as fin:
         read_size = 0
         with tqdm.tqdm(total=filesize) as pbar:
-            for line in f:
+            for line in fin:
                 try:
                     speech, response = line.strip().split("\t")
                 except:
