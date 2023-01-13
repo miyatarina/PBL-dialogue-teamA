@@ -61,20 +61,24 @@ def random_pair(file_path):
     speech_list =[]
     response_list = []
     with open(file_path, "r", encoding='utf-8') as fin:
-        for line in tqdm.tqdm(fin):
-            try:
+        read_size = 0
+        with tqdm.tqdm(total=filesize) as pbar:
+            for line in f:
+                try:
                 speech, response = line.strip().split("\t")
-            except:
-                continue
-            if is_space(speech) or is_space(response):
-                continue
-            if count_min_word(speech, response) < opt.min_word:
-                continue
-            speech_list.append(speech)
-            response_list.append(response)
+                except:
+                    continue
+                if is_space(speech) or is_space(response):
+                    continue
+                if count_min_word(speech, response) < opt.min_word:
+                    continue
+                speech_list.append(speech)
+                response_list.append(response)
+                read_size += len(line.encode('utf-8'))
+                pbar.update(read_size)
     
     with open(file_path.replace(".txt", ".demoji.txt"), "w", encoding='utf-8') as fout:
-        for i in rand_ints_nodup(0, len(speech_list), opt.number_sentences):
+        for i in tqdm.tqdm(rand_ints_nodup(0, len(speech_list), opt.number_sentences)):
             fout.write(del_auxiliary_symbol(speech_list[i]).replace("　", "。") + "\t" + del_auxiliary_symbol(response_list[i]).replace("　", "。") + "\n") 
 
 random_pair(opt.arg1)
