@@ -10,7 +10,21 @@ def rand_ints_nodup(a, b, k):
       ns.append(n)
   return ns
 
-filesize = os.path.getsize(file_path)
+def is_space(text):
+    if " " in text or "　" in text:
+        return True
+    else:
+        return False
+
+def count_min_word(text, text_pair):
+    text_count = len(text)
+    text_pair_count = len(text_pair)
+    if text_count < text_pair_count:
+        return text_count
+    else:
+        return text_pair_count
+
+filesize = os.path.getsize("pre_data.txt")
 speech_list =[]
 response_list = []
 
