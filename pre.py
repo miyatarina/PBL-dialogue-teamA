@@ -14,7 +14,7 @@ filesize = os.path.getsize(file_path)
 speech_list =[]
 response_list = []
 
-with open(file_path, "r", encoding='utf-8') as fin:
+with open('pre_data.txt', "r", encoding='utf-8') as fin:
     read_size = 0
     with tqdm.tqdm(total=filesize) as pbar:
         for line in fin:
