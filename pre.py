@@ -38,7 +38,7 @@ with open('pre_data.txt', "r", encoding='utf-8') as fin:
                 continue
             if is_space(speech) or is_space(response):
                 continue
-            if count_min_word(speech, response) < opt.min_word:
+            if count_min_word(speech, response) < 10:
                 continue
             speech_list.append(speech)
             response_list.append(response)
