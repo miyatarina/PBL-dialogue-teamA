@@ -10,3 +10,5 @@
 - TypeError: __init__() got an unexpected keyword argument 'auth_handler'
   - 以下のようにtweepyのバージョン指定をしてインストールすると直ります 
   - pip3 install tweepy==3.8.0 urllib3==1.26.9
+
+python -m pip install janome でjanomeをインストール
