@@ -1,1 +1,0 @@
-onmt_translate -model "onmt_data/model/rnn_step_miyata9_99000.pt" -src "in_sentence.txt" -output "out_sentence.txt" -gpu "0" -verbose
