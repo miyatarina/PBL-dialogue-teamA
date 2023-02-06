@@ -1,0 +1,75 @@
+# rnn.yaml
+
+data:
+    train:
+        path_src: /home/miyata/pbl/code/python/1tag_2tag_all_3M.shuf.tok.src.train.txt
+        path_tgt: /home/miyata/pbl/code/python/1tag_2tag_all_3M.shuf.tok.tgt.train.txt
+    valid:
+        path_src: /home/miyata/pbl/code/python/1tag_2tag_all_3M.shuf.tok.src.valid.txt
+        path_tgt: /home/miyata/pbl/code/python/1tag_2tag_all_3M.shuf.tok.tgt.valid.txt
+
+save_data: /home/miyata/pbl/code/python/onmt_data
+src_vocab: /home/miyata/pbl/code/python/onmt_data/vocab.src
+tgt_vocab: /home/miyata/pbl/code/python/onmt_data/vocab.tgt
+
+# Model
+encoder_type: rnn
+decoder_type: rnn
+enc_layers: 2 # 1 -> 2 -> 1 -> 2
+dec_layers: 2 # 1 -> 2 -> 1 -> 2
+enc_hid_size: 256
+dec_hid_size: 256
+src_word_vec_size: 128
+tgt_word_vec_size: 128
+global_attention: mlp
+
+# Optimization
+optim: "adam"
+adam_beta1: 0.9
+adam_beta2: 0.998
+learning_rate: 0.00005 # 0.001 -> 0.0001 -> 0.0005 -> 0.00005
+label_smoothing: 0.3 # 0.3 -> 0.2 -> 0.3
+dropout: 0.3 # 0.2 -> 0.3
+max_generator_batches: 2
+max_grad_norm: 0.0
+accum_count: 4 # 2 -> 4
+
+# General
+save_model: /home/miyata/pbl/code/python/onmt_data/rnn_miyata9_honban
+seed: 5
+gpu_ranks: [0]
+batch_size: 32  # 32 -> 64 -> 32
+report_every: 1000
+valid_steps: 1000
+train_steps: 1000000
+save_checkpoint_steps: 1000
+early_stopping: 10 # 5 -> 10
+
+# miyata2
+# enc_layers: 1 # 1 -> 2 -> 1
+# dec_layers: 1 # 1 -> 2 -> 1
+# learning_rate: 0.0001 # 0.001 -> 0.0001
+# batch_size: 32  # 32 -> 64
+
+# miyata3
+# enc_layers: 1 # 1 -> 2 -> 1
+# dec_layers: 1 # 1 -> 2 -> 1
+# batch_size: 32  # 32 -> 64 -> 32pip
+
+# miyata4
+# learning_rate: 0.0005 # 0.001 -> 0.0001 -> 0.0005
+
+# miyata6
+# learning_rate: 0.00005 # 0.001 -> 0.0001 -> 0.0005 -> 0.00005
+# enc_layers: 2 # 1 -> 2 -> 1 -> 2
+# dec_layers: 2 # 1 -> 2 -> 1 -> 2
+
+# miyata7
+# label_smoothing: 0.2 # 0.3 -> 0.2
+
+# miyata8
+# label_smoothing: 0.3 # 0.3 -> 0.2 -> 0.3
+# dropout: 0.3 # 0.2 -> 0.3
+
+# miyata9
+# accum_count: 4 # 2 -> 4
