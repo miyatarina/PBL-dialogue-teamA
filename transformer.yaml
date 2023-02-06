@@ -1,0 +1,67 @@
+# transformer.yaml
+
+data:
+    train:
+        path_src: /home/miyata/pbl/code/python/pre_data_not_deleate_10count.src.train.tok.txt
+        path_tgt: /home/miyata/pbl/code/python/pre_data_not_deleate_10count.tgt.train.tok.txt
+    valid:
+        path_src: /home/miyata/pbl/code/python/pre_data_not_deleate_10count.src.valid.tok.txt
+        path_tgt: /home/miyata/pbl/code/python/pre_data_not_deleate_10count.tgt.valid.tok.txt
+
+save_data: /home/miyata/pbl/code/python/onmt_data
+src_vocab: /home/miyata/pbl/code/python/onmt_data/vocab.src
+tgt_vocab: /home/miyata/pbl/code/python/onmt_data/vocab.tgt
+
+# General
+# save_model: /home/teramen/pbl/code/PBL_dialog/training/model3/rnn
+
+save_model: /home/miyata/pbl/code/python/onmt_data/transformer
+# seed: 0
+# gpu_ranks: 0
+# batch_size: 64
+# report_every: 100
+# train_steps: 1000000
+# early_stopping: 20
+# valid_steps: 1000
+# save_checkpoint_steps: 10000
+
+
+
+save_checkpoint_steps: 1000
+# keep_checkpoint: 10
+seed: 3435
+train_steps: 500000
+valid_steps: 10000
+warmup_steps: 8000
+report_every: 100
+
+decoder_type: transformer
+encoder_type: transformer
+word_vec_size: 512
+hidden_size: 512
+layers: 6
+transformer_ff: 2048
+heads: 8
+
+accum_count: 3
+optim: adam
+adam_beta1: 0.9
+adam_beta2: 0.998
+decay_method: noam
+learning_rate: 2.0
+max_grad_norm: 0.0
+
+batch_size: 4096
+batch_type: tokens
+normalization: tokens
+dropout: 0.1
+label_smoothing: 0.1
+early_stopping: 10 # miyataが追加
+
+param_init: 0.0
+param_init_glorot: 'true'
+position_encoding: 'true'
+
+world_size: 1
+gpu_ranks:
+- 0
