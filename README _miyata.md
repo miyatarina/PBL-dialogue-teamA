@@ -10,6 +10,7 @@ bash honban.sh
 ```
 で`honban.sh`を実行する．
 
+
 ## 評価
 1. `honban2.sh`の`pt`に使用したいモデルを指定する．
 1. `input_file`に学習用データを指定する．
