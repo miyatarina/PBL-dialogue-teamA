@@ -1,5 +1,33 @@
 ## 地域タグの自動付与
-1. 
+1.  PMIの平均からタグづけを行いたい場合
+```
+python tag_acc.py ave pmi [ファイル名]
+```
+
+1. LocalPMIの平均からタグづけを行いたい場合
+```
+python tag_acc.py ave localpmi [ファイル名]
+```
+
+1. TFIDFの平均からタグづけを行いたい場合
+```
+python tag_acc.py ave tfidf [ファイル名]
+```
+
+1. PMIの最大値からタグづけを行いたい場合
+```
+python tag_acc.py max pmi [ファイル名]
+```
+
+1. LocalPMIの最大値からタグづけを行いたい場合
+```
+python tag_acc.py max localpmi [ファイル名]
+```
+
+1. TFIDFの最大値からタグづけを行いたい場合
+```
+python tag_acc.py max tfidf [ファイル名]
+```
 
 ## 学習
 1. `honban.sh`の`input_file`に学習用データを指定する．
