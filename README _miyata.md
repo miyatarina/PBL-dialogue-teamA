@@ -10,7 +10,6 @@ bash honban.sh
 ```
 で`honban.sh`を実行する．
 
-
 ## 評価
 1. `honban2.sh`の`pt`に使用したいモデルを指定する．
 1. `input_file`に学習用データを指定する．
@@ -22,6 +21,8 @@ bash honban2.sh
 で`honban2.sh`を実行する．
 
 ## Telegramとの接続
+1. `pbl_shell.sh`のモデルのパスを先ほど評価の時に使用したモデルのものに変更する．
+1. その後，
 ```bash
 python seq_steps.py
 ```
