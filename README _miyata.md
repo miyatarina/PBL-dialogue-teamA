@@ -24,23 +24,24 @@ python tag_acc.py ave pmi [ファイル名]
 ちなみに，一番性能が良かったのはLocalPMIの平均値でタグづけを行なった場合である．
 
 ## 学習
-1. `honban.sh`の`input_file`に学習用データを指定する．
+1. `honban.sh`の`input_file`に学習用データ（タグと応答がタブで区切られた形式)を指定する．
 1. `spm`には，`get_sentencepiece.py`から出力されるモデル名を指定する．（ここでは`test.model`）
 1. `train_n`に学習用データの数を指定する．
 1. `valid_n`に検証用データの数を指定する．
 1. `test_n`に評価用データの数を指定する．
 1. 最後に，
-```bash
+```
 bash honban.sh
 ```
 で`honban.sh`を実行する．
 
 ## 評価
 1. `honban2.sh`の`pt`に使用したいモデルを指定する．
-1. `input_file`に学習用データを指定する．
+1. `input_file`に評価用データを指定する．
 1. `output_file`に出力応答文を保存するファイルを指定する．
+1. `correct_file`に正解応答文が書かれたファイルを指定する．
 1. 最後に，
-```bash
+```
 bash honban2.sh
 ```
 で`honban2.sh`を実行する．
@@ -48,7 +49,7 @@ bash honban2.sh
 ## Telegramとの接続
 1. `pbl_shell.sh`のモデルのパスを先ほど評価の時に使用したモデルのものに変更する．
 1. その後，
-```bash
+```
 python seq_steps.py
 ```
 で`seq_steps.py`を実行する．
