@@ -49,4 +49,5 @@ onmt_build_vocab -config "transformer.yaml" -n_sample $train_n -overwrite
 # ONMT用の学習
 onmt_train -config "transformer.yaml"
 
-curl -X POST -H 'Content-type: application/json' --data '{"text":"transformer学習終わったよ"}' https://hooks.slack.com/services/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
+# slackに学習終了通知
+# curl -X POST -H 'Content-type: application/json' --data '{"text":"transformer学習終わったよ"}' [自分のスラックのURL]
