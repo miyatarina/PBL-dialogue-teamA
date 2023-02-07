@@ -1,4 +1,4 @@
-# 学習
+## 学習
 
 1. `honban.sh`の`input_file`に学習用データを指定する
 1. `spm`には，`get_sentencepiece.py`から出力されるモデル名を指定する（ここでは`test.model`）
@@ -9,4 +9,6 @@
 ```bash
 bash honban.sh
 ```
-を行う
+で`honban.sh`を実行する．
+
+## Telegramとの接続
