@@ -1,7 +1,7 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
  
 # アクセストークン（先ほど発行されたアクセストークンに書き換えてください）
-TOKEN = "5949881051:AAFjuIDhW8KFxBxThKwPtNckwBxRiBiWcwk"
+TOKEN = ""
  
  
 class TelegramBot:

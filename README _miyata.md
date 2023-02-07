@@ -12,3 +12,6 @@ bash honban.sh
 で`honban.sh`を実行する．
 
 ## Telegramとの接続
+
+
+Telegram_bot.pyは[こちら](https://github.com/dsbook/dsbook/blob/master/telegram_bot.py)のものを用いました．
