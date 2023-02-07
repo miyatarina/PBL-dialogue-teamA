@@ -10,6 +10,16 @@ bash honban.sh
 ```
 で`honban.sh`を実行する．
 
+## 評価
+1. `honban2.sh`の`pt`に使用したいモデルを指定する．
+1. `input_file`に学習用データを指定する．
+1. `output_file`に出力応答文を保存するファイルを指定する．
+1. 最後に，
+```bash
+bash honban2.sh
+```
+で`honban2.sh`を実行する．
+
 ## Telegramとの接続
 ```bash
 python seq_steps.py
