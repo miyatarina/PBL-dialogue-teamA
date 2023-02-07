@@ -2,35 +2,14 @@
 発話文，応答文のみのタグなしデータにタグをつけたい場合は`tag_acc.py`を用いる．
 既に性別タグがついている1タグのデータにタグをつけたい場合は`tag_acc_in_gendertag.py`を用いる．
 
-1.  PMIの平均からタグづけを行いたい場合
+例）PMIの平均からタグづけを行いたい場合
 ```
 python tag_acc.py ave pmi [ファイル名]
 ```
 
-2. LocalPMIの平均からタグづけを行いたい場合
-```
-python tag_acc.py ave localpmi [ファイル名]
-```
+第一引数を`max`と指定すると最大値を用いてタグづけをする．
 
-3. TFIDFの平均からタグづけを行いたい場合
-```
-python tag_acc.py ave tfidf [ファイル名]
-```
-
-4. PMIの最大値からタグづけを行いたい場合
-```
-python tag_acc.py max pmi [ファイル名]
-```
-
-5. LocalPMIの最大値からタグづけを行いたい場合
-```
-python tag_acc.py max localpmi [ファイル名]
-```
-
-6. TFIDFの最大値からタグづけを行いたい場合
-```
-python tag_acc.py max tfidf [ファイル名]
-```
+また，第二引数を`localpmi`と指定するとLocalPMIを用いてタグづけを行い，`tfidf`と指定するとTFIDFを用いてタグづけをする．
 
 また，\[ファイル名\]の部分を`acc`に変更すると，タグづけの正解率を表示させることができる．
 
