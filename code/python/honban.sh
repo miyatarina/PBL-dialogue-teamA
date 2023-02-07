@@ -31,17 +31,17 @@ shuf ${input_file}.demoji.tok.txt > ${input_file}.shuf.demoji.tok.txt
 cut -f1,2 ${input_file}.tok.txt | tr "\t" " " > ${input_file}.tok.src.txt
 cut -f3 ${input_file}.tok.txt > ${input_file}.tok.tgt.txt
 
-# # devを作る
-# tail -${valid_n} ${input_file}.tok.src.txt > ${input_file}.tok.src.valid.txt
-# tail -${valid_n} ${input_file}.tok.tgt.txt > ${input_file}.tok.tgt.valid.txt
+# devを作る
+tail -${valid_n} ${input_file}.tok.src.txt > ${input_file}.tok.src.valid.txt
+tail -${valid_n} ${input_file}.tok.tgt.txt > ${input_file}.tok.tgt.valid.txt
 
-# # trainを作る
-# head -${train_n} ${input_file}.tok.src.txt > ${input_file}.tok.src.train.txt
-# head -${train_n} ${input_file}.tok.tgt.txt > ${input_file}.tok.tgt.train.txt
+# trainを作る
+head -${train_n} ${input_file}.tok.src.txt > ${input_file}.tok.src.train.txt
+head -${train_n} ${input_file}.tok.tgt.txt > ${input_file}.tok.tgt.train.txt
 
-# # testを作る
-# head -$(( $train_n+$test_n )) ${input_file}.tok.src.txt | tail -${test_n} > ${input_file}.tok.src.test.txt
-# head -$(( $train_n+$test_n )) ${input_file}.tok.tgt.txt | tail -${test_n} > ${input_file}.tok.tgt.test.txt
+# testを作る
+head -$(( $train_n+$test_n )) ${input_file}.tok.src.txt | tail -${test_n} > ${input_file}.tok.src.test.txt
+head -$(( $train_n+$test_n )) ${input_file}.tok.tgt.txt | tail -${test_n} > ${input_file}.tok.tgt.test.txt
 
 # ONMT用の前処理
 onmt_build_vocab -config "transformer.yaml" -n_sample $train_n -overwrite
