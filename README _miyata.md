@@ -75,7 +75,7 @@ python seq_steps.py
 
 ## Telegramでの対話
 入力は
-```bash
+```
 入力文 ||| <地域タグ> <性別タグ>
 ```
 で行う．
