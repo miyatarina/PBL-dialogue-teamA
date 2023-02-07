@@ -17,3 +17,15 @@ python seq_steps.py
 で`seq_steps.py`を実行する．
 
 `seq_steps.py`内で使用する`telegram_bot.py`については[こちら](https://github.com/dsbook/dsbook/blob/master/telegram_bot.py)のものを用いた．
+
+## Telegramでの対話
+入力は
+```bash
+入力文 ||| <地域タグ> <性別タグ>
+```
+で行う．
+地域タグとして指定できるものは，
+北海道，宮城，東京，愛知，大阪，広島，愛媛，福岡
+性別タグとして指定できるものは，
+男性，女性
+である．
