@@ -13,23 +13,23 @@ test_n=1000
 
 # miyata.txt -> miyata.demoji.txt
 # ツイートのテキストから絵文字を消す
-# python del_emoji.py ${input_file}.txt
+python del_emoji.py ${input_file}.txt
 
 # センテンスピースのモデルを学習する
 # miyata.demoji.txt -> miyata.demoji.detab.txt, (test.model, test.vocab)
 # 　　　　　　　　　学習用のテキスト　　　単語分割のモデル
-# python get_sentencepiece.py ${input_file}.txt
+python get_sentencepiece.py ${input_file}.txt
 
 # 絵文字を消したテキストを単語分割する
 # miyata.demoji.txt -> miyata.demoji.tok.txt
-# python apply-spm.py ${input_file}.txt $spm
+python apply-spm.py ${input_file}.txt $spm
 
 # 単語分割したやつをシャッフル（男女のタグがいい感じに混ざるようにする）
-# shuf ${input_file}.demoji.tok.txt > ${input_file}.shuf.demoji.tok.txt
+shuf ${input_file}.demoji.tok.txt > ${input_file}.shuf.demoji.tok.txt
 
 # OpenNMT読み込むようにsrcとtgtに分ける
-# cut -f1,2 ${input_file}.tok.txt | tr "\t" " " > ${input_file}.tok.src.txt
-# cut -f3 ${input_file}.tok.txt > ${input_file}.tok.tgt.txt
+cut -f1,2 ${input_file}.tok.txt | tr "\t" " " > ${input_file}.tok.src.txt
+cut -f3 ${input_file}.tok.txt > ${input_file}.tok.tgt.txt
 
 # # devを作る
 # tail -${valid_n} ${input_file}.tok.src.txt > ${input_file}.tok.src.valid.txt
