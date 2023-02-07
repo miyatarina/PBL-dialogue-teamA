@@ -12,4 +12,4 @@ onmt_translate -model "onmt_data/${pt}.pt" -src "${input_file}" -output "${outpu
 python detok-spm.py ${output_file}
 
 # 評価
-python bleu.py ${output_file} ${correct_file}
+python bleu.py ${correct_file} ${output_file}
