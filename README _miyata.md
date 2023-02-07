@@ -39,6 +39,8 @@ python tag_acc.py max tfidf [ファイル名]
 
 タグの間はスペース，タグと発話文もしくは発話文と応答文の間はタブで区切られている．
 
+ちなみに，一番性能が良かったのはLocalPMIの平均値でタグづけを行なった場合である．
+
 ## 学習
 1. `honban.sh`の`input_file`に学習用データを指定する．
 1. `spm`には，`get_sentencepiece.py`から出力されるモデル名を指定する．（ここでは`test.model`）
