@@ -14,4 +14,4 @@ bash honban.sh
 ## Telegramとの接続
 
 
-Telegram_bot.pyは[こちら](https://github.com/dsbook/dsbook/blob/master/telegram_bot.py)のものを用いました．
+* Telegram_bot.pyは[こちら](https://github.com/dsbook/dsbook/blob/master/telegram_bot.py)のものを用いました．
