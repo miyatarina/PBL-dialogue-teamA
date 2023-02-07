@@ -1,5 +1,4 @@
 ## 学習
-
 1. `honban.sh`の`input_file`に学習用データを指定する
 1. `spm`には，`get_sentencepiece.py`から出力されるモデル名を指定する（ここでは`test.model`）
 1. `train_n`に学習用データの数を指定する
@@ -12,6 +11,10 @@ bash honban.sh
 で`honban.sh`を実行する．
 
 ## Telegramとの接続
+```bash
+python seq_steps.py
+```
+で`seq_steps.py`を実行する．
 
 
-* Telegram_bot.pyは[こちら](https://github.com/dsbook/dsbook/blob/master/telegram_bot.py)のものを用いました．
+Telegram_bot.pyは[こちら](https://github.com/dsbook/dsbook/blob/master/telegram_bot.py)のものを用いました．
