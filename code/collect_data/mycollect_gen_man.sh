@@ -9,4 +9,4 @@ if [ -z "$SAVE_FILE" ]; then
     exit 0
 fi
 echo "出力ファイルパス:${SAVE_FILE}"
-python collect_testdata.py -sf "${SAVE_FILE}"
+python mycollect_gen_man.py -sf "${SAVE_FILE}"
