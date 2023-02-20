@@ -131,7 +131,7 @@ while True:
             tweet2 = id2status[rid].full_text.replace("\n", " ")
             tweet2 = re.sub(r"@[0-9a-zA-Z_]{1,15} +", "", tweet2)
 
-            f.write(tweet1+ "\t" + tweet2 + "\t" + tag1 + " " + tag2 + "\n")
+            f.write(tweet1+ "\t" + tweet2 + "\t" + tag + " " + tag2 + "\n")
       
     # 保存したツイートのリプライ先のツイートが保存されていれば，id2replyidのキーを元ツイートのid，値をリプライ先ツイートのidとする
     id2replyid = {}
