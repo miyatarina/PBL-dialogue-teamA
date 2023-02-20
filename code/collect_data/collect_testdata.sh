@@ -7,8 +7,8 @@
 # パス名を置き換えてください
 SAVE_FILE=$1
 if [ -z "$SAVE_FILE" ]; then
-    echo "入力方法:bash collect_testdata.sh [出力させたいファイル名]"
+    echo "入力方法:bash collect_testdata.sh [出力させたいファイルパス]"
     exit 0
 fi
-echo "出力ファイル名:${SAVE_FILE}"
-python collect_testdata.py -sf "/home/miyata/PBL-dialogue-teamA/data/${SAVE_FILE}"
+echo "出力ファイルパス:${SAVE_FILE}"
+python collect_testdata.py -sf "${SAVE_FILE}"
