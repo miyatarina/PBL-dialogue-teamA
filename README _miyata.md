@@ -3,6 +3,7 @@
 conda create [環境名] python=3.8 anaconda
 ```
 によって環境構築を行う．
+<!-- 環境名：git_pbl -->
 
 さらに，
 ```
