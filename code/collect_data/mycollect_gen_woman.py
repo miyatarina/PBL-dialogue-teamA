@@ -100,6 +100,6 @@ while True:
             tweet2 = id2status[rid].full_text.replace("\n", " ")
             tweet2 = re.sub(r"@[0-9a-zA-Z_]{1,15} +", "", tweet2)
 
-            f.write(tag + "\t" + tweet1+ "\t" + tweet2 + "\n")
+            f.write(tweet1 + "\t" + tweet2 + "\t" + tag + "\n")
     
     print("Write " + str(len(id2replyid)) + " pairs.")
